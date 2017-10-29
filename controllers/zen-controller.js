@@ -1,5 +1,9 @@
 ////Grab the model for information forwarding
 const Zen = require('../models/zen');
+////Grab the time module from node_modules
+const moment = require('moment');
+//And set the time format to a constant.
+const timeFormat = "dddd, MMMM Do YYYY, HH:mm:ss"
 
 ////Start making the controller for zens!
 //set the object with camel case singular context
@@ -21,7 +25,7 @@ zenController.index = function(req, res){
 zenController.create = function(req, res){
 	Zen.create({
 		content: req.body.content,
-		timeStamp: req.body.timeStamp,
+		timeStamp: moment().format(timeFormat),
 		uid: 1
 	}).then(function(){
 		res.redirect('/zens');

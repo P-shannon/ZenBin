@@ -8,7 +8,7 @@ const express = require('express');
 const zenRouter = express.Router();
 //Show all
 zenRouter.get('/', zenController.index);
-
+//Show the zen creation dialogue
 zenRouter.get('/new', function(req, res){
 	res.render('app/zen-new')
 });

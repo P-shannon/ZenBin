@@ -1,12 +1,7 @@
 <% include ../partials/boilerplate%>
-	<script src='moment.js'></script>
 	<form id="newZen" action="/zens" method="post" accept-charset="utf-8">
 		<textarea form='newZen' name="content"></textarea>
-		<input id="time-stamp" type="text" name="timeStamp">
 		<input type="submit" value="Submit">
 	</form>
-	<script>
-		document.querySelector('#time-stamp').value(moment().format());
-		console.log(moment().format());
-	</script>
+
 <% include ../partials/end%>
