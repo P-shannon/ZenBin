@@ -53,7 +53,11 @@ app.get('/', function(req, res){
 	res.render('index');
 })
 
-//Other routes will go here.
+////Other routes will go here.
+//like this super cool zenRouter!
+const zenRouter = require('./routes/zen-routes')
+//Reroute all requests made to '/zens' to the zenRouter file.
+app.use('/zens', zenRouter);
 
 //Handle 404s
 app.use('*', function(req, res){
