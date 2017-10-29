@@ -8,12 +8,13 @@ const express = require('express');
 const zenRouter = express.Router();
 //Show all
 zenRouter.get('/', zenController.index);
-//Show one
-zenRouter.get('/:id', zenController.show);
 
 zenRouter.get('/new', function(req, res){
 	res.render('app/zen-new')
 });
+
+//Show one
+zenRouter.get('/:id', zenController.show);
 
 zenRouter.post('/', zenController.create);
 

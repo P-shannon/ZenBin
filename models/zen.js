@@ -29,7 +29,7 @@ Zen.create = function(zen){
 		(content, time_stamp, user_id)
 		VALUES($1, $2, $3)
 		RETURNING *
-		`,[zen.content, zen.timestamp, zen.uid])
+		`,[zen.content, zen.timeStamp, zen.uid])
 }
 
 //export it

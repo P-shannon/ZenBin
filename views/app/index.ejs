@@ -1,0 +1,11 @@
+<% include ../partials/boilerplate%>
+<h1>DEEZ BE ZENS PEOPEL CWEATED</h1>
+<div id="zenContainer">
+	<%zens.forEach(function(zen){%>
+	<div class="zen">
+		<p><%=zen.time_stamp%></p>
+		<p><%=zen.content%></p>
+	</div>
+	<%})%>
+</div>
+<% include ../partials/end%>
