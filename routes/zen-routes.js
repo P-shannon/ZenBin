@@ -4,14 +4,24 @@ const zenController = require('../controllers/zen-controller');
 //And import express
 const express = require('express');
 
+////Grab the time module from node_modules
+const moment = require('moment');
+//And set the time format to a constant.
+const timeFormat = "dddd, MMMM Do YYYY, HH:mm:ss"
+
 //Now make the router using express.Router
 const zenRouter = express.Router();
 //Show all
-zenRouter.get('/', zenController.index);
+zenRouter.get('/', zenController.indexValid);
 //Show the zen creation dialogue
 zenRouter.get('/new', function(req, res){
-	res.render('app/zen-new')
+	res.render('app/zen-new',{
+		timeFormat: timeFormat,
+	})
 });
+
+//Show valids
+zenRouter.get('/all', zenController.index);
 
 //Show one
 zenRouter.get('/:id', zenController.show);

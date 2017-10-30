@@ -21,6 +21,22 @@ zenController.index = function(req, res){
 	})
 };
 
+//logic for only bringing the non expired ones
+zenController.indexValid = function(req, res){
+	Zen.findAll().then(function(zens){
+		return zens.filter(function(zen){
+			return moment().diff(moment(zen.time_stamp, timeFormat), 'seconds') < 300; 
+		})
+	}).then(function(valids){
+		res.render('app/index',{
+			zens: valids
+		})
+	}).catch(function(deezHands){
+		console.log(deezHands);
+		res.status(500).send(deezHands);
+	})
+};
+
 //logic for creating a new zen
 zenController.create = function(req, res){
 	Zen.create({
@@ -47,6 +63,8 @@ zenController.show = function(req, res){
 		res.status(500).send(deezHands);
 	})
 };
+
+
 
 //Export it
 module.exports = zenController;

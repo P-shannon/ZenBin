@@ -3,5 +3,11 @@
 		<textarea form='newZen' name="content"></textarea>
 		<input type="submit" value="Submit">
 	</form>
-
+<% include ../partials/moment%>
+<script>
+let start = moment().format('<%=timeFormat%>');	
+setInterval(function(){
+	console.log(moment().diff(moment(start,'<%=timeFormat%>'), 'seconds'))
+},500);
+</script>
 <% include ../partials/end%>
