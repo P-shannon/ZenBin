@@ -4,6 +4,8 @@ const zenController = require('../controllers/zen-controller');
 //And import express
 const express = require('express');
 
+const authHelper = require('../services/auth/auth-helper')
+
 ////Grab the time module from node_modules
 const moment = require('moment');
 //And set the time format to a constant.
@@ -14,18 +16,20 @@ const zenRouter = express.Router();
 //Show all
 zenRouter.get('/', zenController.indexValid);
 //Show the zen creation dialogue
-zenRouter.get('/new', function(req, res){
+zenRouter.get('/new', authHelper.loginRequired, function(req, res){
 	res.render('app/zen-new',{
 		timeFormat: timeFormat,
 		user: req.user,
 	})
 });
 
+zenRouter.get('/user', authHelper.loginRequired, zenController.indexUserValid)
+
 //Show valids
-zenRouter.get('/all', zenController.index);
+zenRouter.get('/all', authHelper.loginRequired, zenController.index);
 
 //Show one
-zenRouter.get('/:id', zenController.show);
+zenRouter.get('/:id', authHelper.loginRequired, zenController.show);
 
 zenRouter.post('/', zenController.create);
 
