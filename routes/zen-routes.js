@@ -17,6 +17,7 @@ zenRouter.get('/', zenController.indexValid);
 zenRouter.get('/new', function(req, res){
 	res.render('app/zen-new',{
 		timeFormat: timeFormat,
+		user: req.user,
 	})
 });
 

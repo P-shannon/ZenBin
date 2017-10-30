@@ -14,7 +14,7 @@ const LocalStrategy = require('passport-local').Strategy;
 //Grab other things
 const init = require('./passport');
 //Grab the user model
-const User = require('../models/user');
+const User = require('../../models/user');
 //Grab the auth-helper
 const authHelper = require('./auth-helper');
 
@@ -22,7 +22,7 @@ const authHelper = require('./auth-helper');
 const options = {}
 init();
 passport.use(
-	new LocalStrategy(options, function(username, password){
+	new LocalStrategy(options, function(username, password, done){
 		User.findByUsername(username)
 		.then(function(user){
 			if(!user){

@@ -8,7 +8,7 @@ const User = {};
 //Finding a user
 User.findByUsername = function(username){
 	return db.one(`
-		select * from where username = $1
+		select * from users where username = $1
 		`,[username]
 	)
 };
@@ -21,9 +21,9 @@ User.create = function(user){
 		password_digest)
 		values($1,$2)
 		returning *
-		`,[user.username, user.password]
+		`,[user.username, user.password_digest]
 	)
 }
 
 ////Export it
-module.exports = zenController;
+module.exports = User;

@@ -2,7 +2,7 @@
 //Grab the controller
 const userController = require('../controllers/user-controller');
 //Grab the passport
-const passport = require('../services/auth/passport');
+const passport = require('../services/auth/local');
 //Grab the auth helpers
 const authHelper = require('../services/auth/auth-helper');
 //Grab express
@@ -12,11 +12,15 @@ const authRouter = express.Router();
 
 ////Start listening to the routes
 authRouter.get('/register', authHelper.loginRedirect, function(req, res){
-	res.render('app/auth-register');
+	res.render('app/auth-register',{
+		user: req.user
+	});
 });
 
 authRouter.get('/login', authHelper.loginRedirect, function(req,res){
-	res.render('app/auth-login');
+	res.render('app/auth-login',{
+		user: req.user
+	});
 });
 
 authRouter.get('/logout', function(req, res){

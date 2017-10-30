@@ -6,7 +6,7 @@
 ///////////////////////////////////////////
 
 //// Grab the bcrypt module
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 ////Write functions we're going to use with our authentication functions
 //Check passwords

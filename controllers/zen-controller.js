@@ -14,7 +14,8 @@ const zenController = {};
 zenController.index = function(req, res){
 	Zen.findAll().then(function(zens){
 		res.render('app/index',{
-			zens: zens
+			zens: zens,
+			user: req.user,
 		})
 	}).catch(function(deezHands){
 		console.log(deezHands);
@@ -30,7 +31,8 @@ zenController.indexValid = function(req, res){
 		})
 	}).then(function(valids){
 		res.render('app/index',{
-			zens: valids
+			zens: valids,
+			user: req.user,
 		})
 	}).catch(function(deezHands){
 		console.log(deezHands);
@@ -57,7 +59,8 @@ zenController.show = function(req, res){
 	Zen.findById(req.params.id)
 	.then(function(zen){
 		res.render('app/zen-single',{
-			zen: zen
+			zen: zen,
+			user: req.user,
 		})
 	}).catch(function(deezHands){
 		console.log(deezHands);

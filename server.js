@@ -50,7 +50,9 @@ app.listen(PORT, function(){
 ////Set up first level routing
 //When getting root, give them the landing page.
 app.get('/', function(req, res){
-	res.render('index');
+	res.render('index',{
+		user: req.user
+	});
 })
 
 ////Other routes will go here.
@@ -58,6 +60,10 @@ app.get('/', function(req, res){
 const zenRouter = require('./routes/zen-routes')
 //Reroute all requests made to '/zens' to the zenRouter file.
 app.use('/zens', zenRouter);
+
+//And this mega shitty authRouter!
+const authRouter = require('./routes/auth-routes')
+app.use('/auth', authRouter);
 
 //Handle 404s
 app.use('*', function(req, res){

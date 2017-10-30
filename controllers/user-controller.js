@@ -1,6 +1,6 @@
 ////Grab the essentials
 //bcrypt
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 //the model
 const User = require('../models/user');
 
