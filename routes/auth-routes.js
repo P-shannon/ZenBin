@@ -23,7 +23,7 @@ authRouter.get('/login', authHelper.loginRedirect, function(req,res){
 	});
 });
 
-authRouter.get('/logout', function(req, res){
+authRouter.get('/logout', authHelper.loginRequired, function(req, res){
 	req.logout();
 	res.redirect('/zens');
 });

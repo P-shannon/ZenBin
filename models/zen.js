@@ -14,6 +14,13 @@ Zen.findAll = function(){
 		`);
 }
 
+//Logic for finding zens by user
+Zen.findAllByUser = function(uid){
+	return db.one(`
+		select from * zens where uid = $1
+		`,[uid])
+}
+
 //Logic for grabbing a zen by it's ID
 Zen.findById = function(id){
 	return db.one(`

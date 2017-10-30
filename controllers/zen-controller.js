@@ -40,6 +40,24 @@ zenController.indexValid = function(req, res){
 	})
 };
 
+//Logic for showing a users valid zens
+zenController.indexUserValid = function(req, res){
+	Zen.findAllByUser(req.user.id)
+	.then(function(zens){
+		return zens.filter(function(zen){
+			return moment().diff(moment(zen.time_stamp, timeFormat), 'seconds') < 300; 
+		})
+	}).then(function(valids){
+		res.render('app/index',{
+			zens: valids,
+			user: req.user,
+		})
+	}).catch(function(deezHands){
+		console.log(deezHands);
+		res.status(500).send(deezHands);
+	})
+}
+
 //logic for creating a new zen
 zenController.create = function(req, res){
 	Zen.create({
