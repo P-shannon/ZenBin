@@ -1,5 +1,6 @@
 ////Grab the model for information forwarding
 const Zen = require('../models/zen');
+
 ////Grab the time module from node_modules
 const moment = require('moment');
 //And set the time format to a constant.
@@ -63,8 +64,6 @@ zenController.show = function(req, res){
 		res.status(500).send(deezHands);
 	})
 };
-
-
 
 //Export it
 module.exports = zenController;
