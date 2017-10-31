@@ -1,0 +1,79 @@
+html{
+	--colorMain: #6666FF;
+	--colorFontPrimary: #FFFFFF;
+	--colorFontSecondary: #666666;
+	--colorBackground: #B3E8FF;
+	--colorBackgroundWhiteTrans: rgba(255,255,255,0.4);
+	overflow-x: hidden;
+	overflow: hidden;
+}
+
+body{
+	display:flex;
+	flex-direction: column;
+	width:100vw;height:100vh;
+	background:var(--colorBackground);
+	overflow-x: hidden;
+	overflow: hidden;
+}
+
+nav{
+	flex-basis: 100px;
+	width:100vw; height:auto;
+	background:var(--colorMain);
+	color:var(--colorFontPrimary);
+	position:fixed;
+}
+
+nav ul{
+	height:100%;
+	display:flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-end;
+}
+
+nav ul a{
+	flex-basis: 125px;
+	font-size: 35px;
+	text-align: center;
+}
+
+nav ul a:first-child{
+	flex-basis: 75px;
+	margin-right: auto;
+	font-size: 75px;
+}
+
+h1{
+	font-size: 100px;
+	text-align: center;
+}
+
+#landingContainer{
+	flex:16;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+#landingGreeter{
+	flex-basis: auto;
+	width:90%; height: auto;
+	margin:5%;
+	display:flex;
+	flex-direction: column;
+	justify-content: center;
+	background:var(--colorBackgroundWhiteTrans);
+}
+
+#landingGreeter h1{
+	color: var(--colorFontPrimary);
+	margin-bottom: 30px;
+}
+
+#landingGreeter p{
+	background:var(--colorBackgroundWhiteTrans);
+	color:var(--colorFontSecondary);
+	padding:15px;
+}

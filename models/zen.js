@@ -33,10 +33,10 @@ Zen.findById = function(id){
 Zen.create = function(zen){
 	return db.one(`
 		INSERT INTO zens 
-		(content, time_stamp, user_id)
-		VALUES($1, $2, $3)
+		(content, time_stamp, user_id, title)
+		VALUES($1, $2, $3, $4)
 		RETURNING *
-		`,[zen.content, zen.timeStamp, zen.uid])
+		`,[zen.content, zen.timeStamp, zen.uid, zen.title])
 }
 
 //export it

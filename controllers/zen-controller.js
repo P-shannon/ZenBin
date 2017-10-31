@@ -64,6 +64,7 @@ zenController.indexUserValid = function(req, res){
 //logic for creating a new zen
 zenController.create = function(req, res){
 	Zen.create({
+		title: req.body.title,
 		content: req.body.content,
 		timeStamp: moment().format(timeFormat),
 		uid: req.user.id

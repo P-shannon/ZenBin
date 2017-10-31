@@ -2,12 +2,13 @@
 <h1><%=header%></h1>
 <div id="zenContainer">
 	<%zens.forEach(function(zen){%>
-	<a href="/zens/<%=zen.id%>">
+	<!-- <a href="/zens/<%=zen.id%>"> -->
 		<div class="zen">
 			<p><%=zen.time_stamp%></p>
+			<h3><%=zen.title%></h3>
 			<p><%=zen.content%></p>
 		</div>
-	</a>
+	<!-- </a> -->
 	<hr>
 	<%})%>
 </div>
