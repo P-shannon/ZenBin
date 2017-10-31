@@ -23,7 +23,7 @@ Zen.findAllByUser = function(uid){
 
 //Logic for grabbing a zen by it's ID
 Zen.findById = function(id){
-	return db.one(`
+	return db.oneOrNone(`
 		SELECT * FROM zens WHERE
 		id = $1
 		`,[id]);

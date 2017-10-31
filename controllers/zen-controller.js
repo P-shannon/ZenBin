@@ -79,6 +79,14 @@ zenController.create = function(req, res){
 zenController.show = function(req, res){
 	Zen.findById(req.params.id)
 	.then(function(zen){
+		if(zen.user_id === req.user.id){
+			return zen;
+		}
+		else{
+			res.redirect('/zens/user')
+		}
+	})
+	.then(function(zen){
 		res.render('app/zen-single',{
 			zen: zen,
 			user: req.user,
