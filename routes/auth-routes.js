@@ -29,7 +29,7 @@ authRouter.get('/logout', authHelper.loginRequired, function(req, res){
 });
 
 authRouter.post('/login', passport.authenticate('local',{
-	successRedirect: '/zens',
+	successRedirect: '/zens/user',
 	failureRedirect: '/auth/login',
 	failureFlash: false,
 }));

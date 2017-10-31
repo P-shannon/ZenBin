@@ -16,8 +16,8 @@ Zen.findAll = function(){
 
 //Logic for finding zens by user
 Zen.findAllByUser = function(uid){
-	return db.one(`
-		select from * zens where uid = $1
+	return db.manyOrNone(`
+		select * from zens where user_id = $1
 		`,[uid])
 }
 

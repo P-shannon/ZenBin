@@ -14,6 +14,7 @@ const zenController = {};
 zenController.index = function(req, res){
 	Zen.findAll().then(function(zens){
 		res.render('app/index',{
+			header: "These are zens other people released",
 			zens: zens,
 			user: req.user,
 		})
@@ -31,6 +32,7 @@ zenController.indexValid = function(req, res){
 		})
 	}).then(function(valids){
 		res.render('app/index',{
+			header: "These are zens other people released",
 			zens: valids,
 			user: req.user,
 		})
@@ -49,6 +51,7 @@ zenController.indexUserValid = function(req, res){
 		})
 	}).then(function(valids){
 		res.render('app/index',{
+			header: "These are your zens",
 			zens: valids,
 			user: req.user,
 		})
