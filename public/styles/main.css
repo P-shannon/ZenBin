@@ -51,14 +51,17 @@ nav ul a:first-child{
 	background: rgba(0,0,0,0.4);
 }
 
-#formRegister input, #formLogin input{
+#inputUsername, #inputPassword, #inputPasswordConfirm{
 	width: 275px; height: 30px;
 	margin: 10px;
 	font-size: 28px;
 }
 
 #buttonSubmit{
-	font-size: 26px;
+	width: 277px;
+	margin: 10px;
+	font-size: 24px;
+	background: white;
 	/*REEEEEEEEEEEE WHY DOESN'T THIS WORK!? FUCKING CSS, GET OUT OF MY DEVELOPMENT CYCLE! REEEEEEEEE*/
 }
 
@@ -123,27 +126,40 @@ main h1{
 	overflow-y: scroll;
 }
 
+#zenContainer a{
+	width: 400px; height: 500px;
+	margin-bottom: 15px;
+}
+
 .zen{
-	flex-basis: 300px; height: 500px;
+	display: flex;
+	flex-direction: column;
+	flex-basis: 400px; height: 500px;
 	background: white;
 	overflow-x: hidden;
 	overflow-y: scroll;
 	word-wrap: break-word;
-	margin-bottom: 15px;
 }
 
-.zen h3{
+h3{
 	text-align: center;
+	font-size: 28px;
+	line-height: 36px;
 	background: var(--colorMain);
 	color: var(--colorFontPrimary);
 }
 
-.zen p{
+.zenContent{
 	padding: 10px;
+	font-size: 22px;
+	overflow-y: scroll; 
 }
 
 .timeStamp{
-	text-align: center;
+	min-height: 20px;
+	font-size: 22px;
+	text-align: center;	
+	padding:5px;
 }
 
 /*New zen page*/
@@ -169,3 +185,58 @@ textarea{
 	font-size: 36px;
 	margin: 5%;
 }
+
+/*Single Zen Page*/
+#zen-single{
+	width: auto; height: auto;
+	margin: calc(75px + 5%) 5% 5% 5%;
+	display: flex;
+	flex-direction: column;
+	border-radius: 30px;
+	background: rgba(255,255,255,0.8);
+	overflow: hidden;
+}
+
+#zen-single h3{
+	font-size: 36px;
+	line-height: 48px;
+}
+
+#timeStamp-single{
+	min-height: 34px;
+	font-size: 32px;
+	text-align: center;	
+	margin: 15px;
+}
+
+#content-single{
+	padding: 15px;
+	font-size: 32px;
+	overflow-y: scroll; 
+}
+
+/*Auth screens*/
+main{
+	/*inherits from above*/
+}
+
+#authForm{
+	width: 100%; height:auto;
+	background: var(--colorBackgroundWhiteTrans);
+	border-radius: 15px;
+	padding-top: 5%;	
+}
+
+#username, #password, #passwordConfirmation{
+	width: 80%; height:40px;
+	font-size: 38px;
+	margin: 0 10%;
+	margin-bottom: 5%;
+}
+
+#authSubmit{
+	font-size: 38px;
+	background: white;
+	margin-bottom: 5%;
+}
+

@@ -3,13 +3,13 @@
 	<h1><%=header%></h1>
 	<div id="zenContainer">
 		<%zens.forEach(function(zen){%>
-		<!-- <a href="/zens/<%=zen.id%>"> -->
+		<a href="/zens/<%=zen.id%>">
 			<div class="zen">
 				<h3><%=zen.title%></h3>
 				<p class="timeStamp"><%=zen.time_stamp%></p>
 				<p class="zenContent"><%=zen.content%></p>
 			</div>
-
+		</a>
 		<%})%>
 	</div>
 </main>
