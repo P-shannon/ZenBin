@@ -4,7 +4,6 @@ html{
 	--colorFontSecondary: #666666;
 	--colorBackground: #B3E8FF;
 	--colorBackgroundWhiteTrans: rgba(255,255,255,0.3);
-	overflow-x: hidden;
 	overflow: hidden;
 }
 
@@ -14,7 +13,6 @@ body{
 	width: 100vw; height: 100vh;
 	background: var(--colorBackground);
 	overflow-x: hidden;
-	overflow: hidden;
 }
 
 nav{
@@ -102,3 +100,72 @@ div{
 	padding:15px;
 }
 
+/*Index pages*/
+main{
+	width: auto; height: auto;
+	margin: calc(75px + 5%) 5% 5% 5%;
+	display: flex;
+	flex-direction: column;
+	border-radius: 15px;
+	background: var(--colorBackgroundWhiteTrans);
+}
+
+main h1{
+	color: var(--colorFontPrimary);
+}
+
+#zenContainer{
+	padding: 20px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	background: var(--colorBackgroundWhiteTrans);
+	overflow-y: scroll;
+}
+
+.zen{
+	flex-basis: 300px; height: 500px;
+	background: white;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	word-wrap: break-word;
+	margin-bottom: 15px;
+}
+
+.zen h3{
+	text-align: center;
+	background: var(--colorMain);
+	color: var(--colorFontPrimary);
+}
+
+.zen p{
+	padding: 10px;
+}
+
+.timeStamp{
+	text-align: center;
+}
+
+/*New zen page*/
+main{
+	/*inherits from above*/
+}
+
+#zenTitle{
+	width: 90%; height: 30px;
+	font-size: 28px;
+	margin: 5%;
+
+}
+
+textarea{
+	width: 90%; height: 75vh;
+	margin: 0% 5%;
+	font-size: 28px;
+}
+
+#zenSubmit{
+	background: white;
+	font-size: 36px;
+	margin: 5%;
+}

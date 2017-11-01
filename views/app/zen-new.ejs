@@ -1,12 +1,17 @@
 <% include ../partials/boilerplate%>
+<main>
 	<form id="newZen" action="/zens" method="post" accept-charset="utf-8">
-		<input type="text" name="title" placeholder="Title">
+		<input id="zenTitle" type="text" name="title" placeholder="Title">
 		<textarea form='newZen' name="content"></textarea>
-		<input type="submit" value="Submit">
+		<center>
+			<input id="zenSubmit" type="submit" value="Submit">
+		</center>
 	</form>
+</main>
 <% include ../partials/moment%>
 <script>
 let start = moment().format('<%=timeFormat%>');	
+console.log(start);
 setInterval(function(){
 	console.log(moment().diff(moment(start,'<%=timeFormat%>'), 'seconds'))
 },500);

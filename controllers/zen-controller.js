@@ -4,7 +4,7 @@ const Zen = require('../models/zen');
 ////Grab the time module from node_modules
 const moment = require('moment');
 //And set the time format to a constant.
-const timeFormat = "dddd, MMMM Do YYYY, HH:mm:ss"
+const timeFormat = "MM/DD/YYYY, HH:mm:ss"
 
 ////Start making the controller for zens!
 //set the object with camel case singular context
@@ -14,7 +14,7 @@ const zenController = {};
 zenController.index = function(req, res){
 	Zen.findAll().then(function(zens){
 		res.render('app/index',{
-			header: "These are zens other people released",
+			header: "All Zens to date",
 			zens: zens,
 			user: req.user,
 		})
@@ -32,7 +32,7 @@ zenController.indexValid = function(req, res){
 		})
 	}).then(function(valids){
 		res.render('app/index',{
-			header: "These are zens other people released",
+			header: "Active User Submited Zens",
 			zens: valids,
 			user: req.user,
 		})

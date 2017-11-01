@@ -1,15 +1,16 @@
 <% include ../partials/boilerplate%>
-<h1><%=header%></h1>
-<div id="zenContainer">
-	<%zens.forEach(function(zen){%>
-	<!-- <a href="/zens/<%=zen.id%>"> -->
-		<div class="zen">
-			<p><%=zen.time_stamp%></p>
-			<h3><%=zen.title%></h3>
-			<p><%=zen.content%></p>
-		</div>
-	<!-- </a> -->
-	<hr>
-	<%})%>
-</div>
+<main>
+	<h1><%=header%></h1>
+	<div id="zenContainer">
+		<%zens.forEach(function(zen){%>
+		<!-- <a href="/zens/<%=zen.id%>"> -->
+			<div class="zen">
+				<h3><%=zen.title%></h3>
+				<p class="timeStamp"><%=zen.time_stamp%></p>
+				<p class="zenContent"><%=zen.content%></p>
+			</div>
+
+		<%})%>
+	</div>
+</main>
 <% include ../partials/end%>

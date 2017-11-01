@@ -9,7 +9,7 @@ const authHelper = require('../services/auth/auth-helper')
 ////Grab the time module from node_modules
 const moment = require('moment');
 //And set the time format to a constant.
-const timeFormat = "dddd, MMMM Do YYYY, HH:mm:ss"
+const timeFormat = "MM/DD/YYYY, HH:mm:ss"
 
 //Now make the router using express.Router
 const zenRouter = express.Router();
