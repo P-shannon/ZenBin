@@ -12,6 +12,9 @@ const zenbinApp = {
 		}
 	},
 	showLogin: function(){
+		if(zenbinApp.registerPresent){
+			zenbinApp.destroyRegister();
+		}
 		zenbinApp.loginPresent = true;
 		let form = document.createElement('form');
 		form.id = 'formLogin';
@@ -29,6 +32,7 @@ const zenbinApp = {
 		password.placeholder = 'Password';
 		form.appendChild(password);
 		let submit = document.createElement('input');
+		submit.id = 'buttonSubmit';
 		submit.type = 'submit';
 		submit.value = 'Log in';
 		form.appendChild(submit);
@@ -50,6 +54,9 @@ const zenbinApp = {
 		}
 	},
 	showRegister: function(){
+		if(zenbinApp.loginPresent){	
+			zenbinApp.destroyLogin();
+		}
 		zenbinApp.registerPresent = true;
 		let form = document.createElement('form');
 		form.id = 'formRegister';
@@ -72,6 +79,7 @@ const zenbinApp = {
 		passwordConfirm.placeholder = 'Confirm Password';
 		form.appendChild(passwordConfirm);
 		let submit = document.createElement('input');
+		submit.id = 'buttonSubmit';
 		submit.type = 'submit';
 		submit.value = 'Sign up';
 		form.appendChild(submit);
@@ -79,7 +87,7 @@ const zenbinApp = {
 	},
 	destroyRegister: function(){
 		zenbinApp.registerPresent = false;
-		document.querySelector('body').removeChild(document.querySelector('#formLogin'));
+		document.querySelector('body').removeChild(document.querySelector('#formRegister'));
 	},
 	decorateLanding: function(){
 		//I hereby apologize for this shit code....
@@ -103,11 +111,11 @@ const zenbinApp = {
 		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`
 		document.querySelector('body').appendChild(box);
-		setTimeout(function(){
+		// setTimeout(function(){
 
-		},3000);
+		// },3000);
 	},
-	moveThing: function(element){
-		
-	},
+	// moveThing: function(element){
+
+	// },
 }
