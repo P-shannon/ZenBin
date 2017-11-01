@@ -29,7 +29,7 @@ const zenbinApp = {
 		form.appendChild(username);
 		let password = document.createElement('input');
 		password.id = 'inputPassword';
-		password.type = 'text';
+		password.type = 'password';
 		password.name = 'password';
 		password.placeholder = 'Password';
 		form.appendChild(password);
@@ -73,13 +73,13 @@ const zenbinApp = {
 		form.appendChild(username);
 		let password = document.createElement('input');
 		password.id = 'inputPassword';
-		password.type = 'text';
+		password.type = 'password';
 		password.name = 'password';
 		password.placeholder = 'Password';
 		form.appendChild(password);
 		let passwordConfirm = document.createElement('input');
 		passwordConfirm.id = 'inputPasswordConfirm';
-		passwordConfirm.type = 'text';
+		passwordConfirm.type = 'password';
 		passwordConfirm.name = 'passwordConfirm';
 		passwordConfirm.placeholder = 'Confirm Password';
 		form.appendChild(passwordConfirm);

@@ -16,6 +16,7 @@ body{
 }
 
 nav{
+	user-select: none;
 	flex-basis: 100px;
 	width: 100vw; height: auto;
 	background: var(--colorMain);
@@ -106,7 +107,7 @@ div{
 /*Index pages*/
 main{
 	width: auto; height: auto;
-	margin: calc(75px + 5%) 5% 5% 5%;
+	margin: 100px 5% 5% 5%;
 	display: flex;
 	flex-direction: column;
 	border-radius: 15px;
@@ -150,6 +151,8 @@ h3{
 }
 
 .zenContent{
+	user-select: none;
+	min-height: 250px;
 	padding: 10px;
 	font-size: 22px;
 	overflow-y: scroll; 
@@ -175,6 +178,7 @@ main{
 }
 
 textarea{
+	user-select: none;
 	width: 90%; height: 75vh;
 	margin: 0% 5%;
 	font-size: 28px;
@@ -210,6 +214,7 @@ textarea{
 }
 
 #content-single{
+	user-select: none;
 	padding: 15px;
 	font-size: 32px;
 	overflow-y: scroll; 
