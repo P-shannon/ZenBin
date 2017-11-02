@@ -1,4 +1,5 @@
 <% include ../partials/boilerplate%>
+<%include ../partials/moment%>
 <main>
 	<h1><%=header%></h1>
 	<div id="zenContainer">
@@ -6,10 +7,13 @@
 		<a href="/zens/<%=zen.id%>">
 			<div class="zen">
 				<h3><%=zen.title%></h3>
-				<p class="timeStamp"><%=zen.time_stamp%></p>
-				<p class="zenContent"><%=zen.content%></p>
+				<p id="t<%=zen.id%>" class="timeStamp"><%=zen.time_stamp%></p>
+				<p id="c<%=zen.id%>" class="zenContent"><%=zen.content%></p>
 			</div>
 		</a>
+		<script>
+			zenbinApp.zenFadeIndex(<%=zen.id%>);
+		</script>
 		<%})%>
 	</div>
 </main>

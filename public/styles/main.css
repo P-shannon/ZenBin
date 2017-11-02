@@ -173,13 +173,13 @@ main{
 #zenTitle{
 	width: 90%; height: 30px;
 	font-size: 28px;
-	margin: 5%;
+	margin: 25px 5%;
 
 }
 
 textarea{
 	user-select: none;
-	width: 90%; height: 75vh;
+	width: 90%; height: 50vh;
 	margin: 0% 5%;
 	font-size: 28px;
 }
@@ -187,7 +187,7 @@ textarea{
 #zenSubmit{
 	background: white;
 	font-size: 36px;
-	margin: 5%;
+	margin: 25px 5%;
 }
 
 /*Single Zen Page*/
@@ -217,7 +217,7 @@ textarea{
 	user-select: none;
 	padding: 15px;
 	font-size: 32px;
-	overflow-y: scroll; 
+	overflow-y: scroll;
 }
 
 /*Auth screens*/

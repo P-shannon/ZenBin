@@ -116,11 +116,75 @@ const zenbinApp = {
 		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`
 		document.querySelector('body').appendChild(box);
-		// setTimeout(function(){
-
-		// },3000);
+		setTimeout(function(){
+			document.querySelector('body').removeChild(box);
+		},3000);
 	},
 	// moveThing: function(element){
-
+		//This broken dream is brought to you in part by time constraints!
 	// },
+	startDecorating: function(){
+		setInterval(zenbinApp.decorateLanding,3000);
+		setTimeout(function(){setInterval(zenbinApp.decorateLanding,3000)},1000);
+		setTimeout(function(){setInterval(zenbinApp.decorateLanding,3000)},2000);
+		setTimeout(function(){setInterval(zenbinApp.decorateLanding,3000)},3000);
+	},
+	zenFadeSingle: function(){
+		let timeFormat = "MM/DD/YYYY, HH:mm:ss"
+		let timeStamp = document.querySelector('#timeStamp-single').innerText;
+		let content = document.querySelector('#content-single');
+		let wordCount = content.innerText.split(' ').length;
+		let intervals = null;
+		let elapsed = function(){
+			return moment().diff(moment(timeStamp, timeFormat),'seconds')
+		}
+		let visibility = function(){
+			return (1-(((elapsed())/(wordCount*5))));
+		}
+		let setVisibility = function(){
+			content.style.color = `rgba(0, 0, 0, ${visibility()})`;
+			if (visibility() < 0){
+				clearInterval(intervals);
+				content.parentElement.parentElement.removeChild(content.parentElement);
+			}
+		}
+		let updateVisibility = function(){
+			content.style.transition = '0.5s';
+			setVisibility();
+		}
+		setVisibility();
+		intervals = setInterval(function(){
+			updateVisibility();
+			console.log(visibility());
+		},500);
+	},
+	zenFadeIndex: function(id){
+		let timeFormat = "MM/DD/YYYY, HH:mm:ss"
+		let timeStamp = document.querySelector(`#t${id}`).innerText;
+		let content = document.querySelector(`#c${id}`)
+		let wordCount = content.innerText.split(' ').length;
+		let intervals = null;
+		let elapsed = function(){
+			return moment().diff(moment(timeStamp, timeFormat),'seconds')
+		}
+		let visibility = function(){
+			return (1-(((elapsed())/(wordCount*5))));
+		}
+		let setVisibility = function(){
+			content.style.color = `rgba(0, 0, 0, ${visibility()})`;
+			if (visibility() < 0){
+				clearInterval(intervals);
+				content.parentElement.parentElement.parentElement.removeChild(content.parentElement.parentElement);
+			}
+		}
+		let updateVisibility = function(){
+			content.style.transition = '0.5s';
+			setVisibility();
+		}
+		setVisibility();
+		intervals = setInterval(function(){
+			updateVisibility();
+			console.log(visibility());
+		},500);
+	}
 }

@@ -45,11 +45,11 @@ zenController.indexValid = function(req, res){
 //Logic for showing a users valid zens
 zenController.indexUserValid = function(req, res){
 	Zen.findAllByUser(req.user.id)
-	.then(function(zens){
+	/*.then(function(zens){
 		return zens.filter(function(zen){
 			return moment().diff(moment(zen.time_stamp, timeFormat), 'seconds') < 300; 
 		})
-	}).then(function(valids){
+	})*/.then(function(valids){
 		res.render('app/index',{
 			header: "These are your zens",
 			zens: valids,
@@ -79,18 +79,18 @@ zenController.create = function(req, res){
 //logic for showing a single zen
 zenController.show = function(req, res){
 	Zen.findById(req.params.id)
-	.then(function(zen){
+	/*.then(function(zen){
 		if(zen.user_id === req.user.id){
 			return zen;
 		}
 		else{
 			res.redirect('/zens/user')
 		}
-	})
+	})*/
 	.then(function(zen){
 		res.render('app/zen-single',{
 			zen: zen,
-			user: req.user,
+			user: req.user
 		})
 	}).catch(function(deezHands){
 		console.log(deezHands);
