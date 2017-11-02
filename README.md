@@ -11,14 +11,10 @@
 
 > [Page 2](https://files.slack.com/files-pri/T0351JZQ0-F7TBNDV09/20171102_085922.jpg)
 
->I'm particularly poor at wireframing.
+> I'm particularly poor at wireframing.
 
 ## Initial thoughts on app structure
-> Two tables, users, zens, User can have multiple zens, zens can have one user
-> Authentication for saving your zens and watching them go
-> A landing page that shows recently released zens by other users (anonymously)
-> A method of inputing text into a container while disallowing selecting and saving
-> A page for watching your zens fade into oblivion
+> Two tables, users, zens, User can have multiple zens, zens can have one user. Authentication for saving your zens and watching them go. A landing page that shows recently released zens by other users (anonymously). A method of inputing text into a container while disallowing selecting and saving. A page for watching your zens fade into oblivion
 
 ## Phases of Completion
 
