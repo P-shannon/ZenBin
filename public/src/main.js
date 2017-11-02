@@ -140,13 +140,14 @@ const zenbinApp = {
 	},
 	zenFadeSingle: function(){
 		let timeFormat = "MM/DD/YYYY, HH:mm:ss"
-		let timeStamp = document.querySelector('#timeStamp-single').innerText;
+		let timeStamp = parseInt(document.querySelector('#timeStamp-single').dataset.unixstamp);
 		let content = document.querySelector('#content-single');
 		let wordCount = content.innerText.split(' ').length;
 		let intervals = null;
 		let elapsed = function(){
-			return moment().diff(moment(timeStamp, timeFormat),'seconds')
+			return moment(Date.now()).diff(moment(timeStamp),'seconds')
 		}
+		console.log('elapsed '+elapsed());
 		let visibility = function(){
 			return (1-(((elapsed())/(wordCount*5))));
 		}
@@ -169,12 +170,12 @@ const zenbinApp = {
 	},
 	zenFadeIndex: function(id){
 		let timeFormat = "MM/DD/YYYY, HH:mm:ss"
-		let timeStamp = document.querySelector(`#t${id}`).innerText;
+		let timeStamp = parseInt(document.querySelector(`#t${id}`).dataset.unixstamp);
 		let content = document.querySelector(`#c${id}`)
 		let wordCount = content.innerText.split(' ').length;
 		let intervals = null;
 		let elapsed = function(){
-			return moment().diff(moment(timeStamp, timeFormat),'seconds')
+			return moment(Date.now()).diff(moment(timeStamp),'seconds');
 		}
 		let visibility = function(){
 			return (1-(((elapsed())/(wordCount*5))));

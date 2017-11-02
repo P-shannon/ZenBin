@@ -67,8 +67,8 @@ zenController.create = function(req, res){
 	Zen.create({
 		title: req.body.title,
 		content: req.body.content,
-		timeStamp: moment().format(timeFormat),
-		uid: req.user.id
+		timeStamp: Date.now(),
+		uid: req.user.id,
 	}).then(function(){
 		res.redirect('/zens');
 	}).catch(function(deezHands){

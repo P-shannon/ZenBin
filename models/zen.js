@@ -1,6 +1,11 @@
 ////Grab our database for querying
 const db = require('../db/config');
 
+////Grab the time module from node_modules
+const moment = require('moment');
+//And set the time format to a constant.
+const timeFormat = "MM/DD/YYYY, HH:mm:ss"
+
 ////Start making the model for zens!11!!11!
 //set the object with a CAPITAL FUCKING LETTER!
 const Zen = {};
@@ -11,7 +16,13 @@ const Zen = {};
 Zen.findAll = function(){
 	return db.query(`
 		SELECT * FROM zens
-		`);
+		`)
+	.then(function(zens){
+		return zens.map(function(zen){
+			zen.timestring = moment(parseInt(zen.time_stamp)).format(timeFormat);
+			return zen;
+		})
+	});
 }
 
 //Logic for finding zens by user
@@ -26,7 +37,12 @@ Zen.findById = function(id){
 	return db.oneOrNone(`
 		SELECT * FROM zens WHERE
 		id = $1
-		`,[id]);
+		`,[id])
+	.then(function(zen){
+		zen.timestring = moment(parseInt(zen.time_stamp)).format(timeFormat);
+		//console.log('Timestring from model: '+zen.timestring);
+		return zen;
+	});
 }
 
 //Logic for creating a zen

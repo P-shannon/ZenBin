@@ -1,5 +1,4 @@
 <% include ../partials/boilerplate%>
-<%include ../partials/moment%>
 <main>
 	<h1><%=header%></h1>
 	<div id="zenContainer">
@@ -7,7 +6,7 @@
 		<a href="/zens/<%=zen.id%>">
 			<div class="zen">
 				<h3><%=zen.title%></h3>
-				<p id="t<%=zen.id%>" class="timeStamp"><%=zen.time_stamp%></p>
+				<p id="t<%=zen.id%>" class="timeStamp" data-unixStamp="<%=zen.time_stamp%>"><%=zen.timestring%></p>
 				<p id="c<%=zen.id%>" class="zenContent"><%=zen.content%></p>
 			</div>
 		</a>
