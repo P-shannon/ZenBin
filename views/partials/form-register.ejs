@@ -5,4 +5,19 @@
 	<center>
 	<input id="authSubmit" type="submit" value="Sign up">
 	</center>
+<script>
+	const form = document.querySelector('#authForm');
+	const password = document.querySelector('#password');
+	const passwordConfirm = document.querySelector('#passwordConfirmation');
+	form.onsubmit = function(){
+		if(password.value === passwordConfirm.value){
+			return true;
+		}else{
+			alert(`Your passwords don't match, please re-enter your passwords.`);
+			password.value = '';
+			passwordConfirm.value = '';
+			return false;
+		}
+	}
+</script>
 </form>

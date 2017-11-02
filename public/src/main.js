@@ -83,11 +83,20 @@ const zenbinApp = {
 		passwordConfirm.name = 'passwordConfirm';
 		passwordConfirm.placeholder = 'Confirm Password';
 		form.appendChild(passwordConfirm);
-		let submit = document.createElement('input');
+		let submit = document.createElement('button');
 		submit.id = 'buttonSubmit';
-		submit.type = 'submit';
-		submit.value = 'Sign up';
+		submit.innerText = 'Sign up';
 		form.appendChild(submit);
+		form.onsubmit = function(){
+			if(password.value === passwordConfirm.value){
+				return true;
+			}else{
+				alert(`Your passwords don't match, please re-enter your passwords.`);
+				password.value = '';
+				passwordConfirm.value = '';
+				return false;
+			}
+		}
 		document.querySelector('body').appendChild(form);
 	},
 	destroyRegister: function(){
