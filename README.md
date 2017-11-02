@@ -6,12 +6,12 @@
 
 > A zen board is a canvas that can be painted on with just water, that eventually dries leaving no trace of previous work. It's a testament to beauty in transientness. I want to make an online version of one geared towards creative writers and a particular type of diary owners who can have an outlet for creativity and/or emotions with out the commitment of making a lasting piece. 
 
-(Brief description of the game, why you're choosing to make it)
-
 ## Wireframe
-> In progress
+> [Page 1](https://files.slack.com/files-pri/T0351JZQ0-F7TU6LV6Y/20171102_085912.jpg)
 
-(Your wireframes go here. Preferably two or more)
+> [Page 2](https://files.slack.com/files-pri/T0351JZQ0-F7TBNDV09/20171102_085922.jpg)
+
+>I'm particularly poor at wireframing.
 
 ## Initial thoughts on app structure
 > Two tables, users, zens, User can have multiple zens, zens can have one user
@@ -19,8 +19,6 @@
 > A landing page that shows recently released zens by other users (anonymously)
 > A method of inputing text into a container while disallowing selecting and saving
 > A page for watching your zens fade into oblivion
-
-(Write out what challenges you expect to encounter, or ideas you want to come up with)
 
 ## Phases of Completion
 
@@ -44,8 +42,6 @@
 3. Zens fade away over time until being invisible
 4. Zens are destroyed upon becoming invisible
  
-(The steps or phases you expect to go through, and the tasks that you'll need to accomplish to reach each step. These should resemble the acceptance criteria we were working through earlier.)
-
 ## Links and Resources
-
+- [momentjs documentation](https://momentjs.com/docs/)
 (Anything you've looked up so far or are thinking about using.)
