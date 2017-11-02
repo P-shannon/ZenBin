@@ -26,11 +26,12 @@ zenController.index = function(req, res){
 
 //logic for only bringing the non expired ones
 zenController.indexValid = function(req, res){
-	Zen.findAll().then(function(zens){
+	Zen.findAll()
+	/*.then(function(zens){
 		return zens.filter(function(zen){
 			return moment().diff(moment(zen.time_stamp, timeFormat), 'seconds') < 300; 
 		})
-	}).then(function(valids){
+	})*/.then(function(valids){
 		res.render('app/index',{
 			header: "Active User Submited Zens",
 			zens: valids,
