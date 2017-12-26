@@ -1,4 +1,3 @@
-//TEST COMMENT!!!!11!!
 ////Grab our database for querying
 const db = require('../db/config');
 
