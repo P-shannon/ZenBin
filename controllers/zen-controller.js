@@ -13,10 +13,8 @@ const zenController = {};
 //logic for rendering an index of all zens (temp)
 zenController.index = function(req, res){
 	Zen.findAll().then(function(zens){
-		res.render('app/index',{
-			header: "All Zens to date",
-			zens: zens,
-			user: req.user,
+		res.json({
+			zens
 		})
 	}).catch(function(deezHands){
 		console.log(deezHands);
@@ -25,17 +23,12 @@ zenController.index = function(req, res){
 };
 
 //logic for only bringing the non expired ones
+//TODO: Implement properly
 zenController.indexValid = function(req, res){
-	Zen.findAll()
-	/*.then(function(zens){
-		return zens.filter(function(zen){
-			return moment().diff(moment(zen.time_stamp, timeFormat), 'seconds') < 300; 
-		})
-	})*/.then(function(valids){
-		res.render('app/index',{
-			header: "Active User Submited Zens",
-			zens: valids,
-			user: req.user,
+	Zen.findAll().then(function(valids){
+		res.json({
+				message: "Valid Zens retrieved successfully!",
+				zens: valids
 		})
 	}).catch(function(deezHands){
 		console.log(deezHands);
@@ -43,34 +36,17 @@ zenController.indexValid = function(req, res){
 	})
 };
 
-//Logic for showing a users valid zens
-zenController.indexUserValid = function(req, res){
-	Zen.findAllByUser(req.user.id)
-	/*.then(function(zens){
-		return zens.filter(function(zen){
-			return moment().diff(moment(zen.time_stamp, timeFormat), 'seconds') < 300; 
-		})
-	})*/.then(function(valids){
-		res.render('app/index',{
-			header: "These are your zens",
-			zens: valids,
-			user: req.user,
-		})
-	}).catch(function(deezHands){
-		console.log(deezHands);
-		res.status(500).send(deezHands);
-	})
-}
-
 //logic for creating a new zen
 zenController.create = function(req, res){
 	Zen.create({
 		title: req.body.title,
 		content: req.body.content,
 		timeStamp: Date.now(),
-		uid: req.user.id,
-	}).then(function(){
-		res.redirect('/zens');
+	}).then(function(newZen){
+		res.json({
+			message: "Zen created successfully!",
+			zen: newZen
+		});
 	}).catch(function(deezHands){
 		console.log(deezHands);
 		res.status(500).send(deezHands);
@@ -80,18 +56,10 @@ zenController.create = function(req, res){
 //logic for showing a single zen
 zenController.show = function(req, res){
 	Zen.findById(req.params.id)
-	/*.then(function(zen){
-		if(zen.user_id === req.user.id){
-			return zen;
-		}
-		else{
-			res.redirect('/zens/user')
-		}
-	})*/
 	.then(function(zen){
-		res.render('app/zen-single',{
-			zen: zen,
-			user: req.user
+		res.json({
+			message: "Zen retrieved successfully!",
+			zen: zen
 		})
 	}).catch(function(deezHands){
 		console.log(deezHands);
