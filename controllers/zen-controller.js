@@ -1,11 +1,6 @@
 ////Grab the model for information forwarding
 const Zen = require('../models/zen');
 
-////Grab the time module from node_modules
-const moment = require('moment');
-//And set the time format to a constant.
-const timeFormat = "MM/DD/YYYY, HH:mm:ss"
-
 ////Start making the controller for zens!
 //set the object with camel case singular context
 const zenController = {};
@@ -14,6 +9,7 @@ const zenController = {};
 zenController.index = function(req, res){
 	Zen.findAll().then(function(zens){
 		res.json({
+			message: "All Zens retrived successfully!",
 			zens
 		})
 	}).catch(function(deezHands){
