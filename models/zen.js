@@ -19,13 +19,6 @@ Zen.findAll = function(){
 		`)
 }
 
-//Logic for finding zens by user
-Zen.findAllByUser = function(uid){
-	return db.manyOrNone(`
-		select * from zens where user_id = $1
-		`,[uid])
-}
-
 //Logic for grabbing a zen by it's ID
 Zen.findById = function(id){
 	return db.oneOrNone(`
@@ -38,10 +31,10 @@ Zen.findById = function(id){
 Zen.create = function(zen){
 	return db.one(`
 		INSERT INTO zens 
-		(content, time_stamp, user_id, title)
-		VALUES($1, $2, $3, $4)
+		(content, time_stamp, title)
+		VALUES($1, $2, $3)
 		RETURNING *
-		`,[zen.content, zen.timeStamp, zen.uid, zen.title])
+		`,[zen.content, zen.timeStamp, zen.title])
 }
 
 //export it
