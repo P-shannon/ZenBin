@@ -10,8 +10,6 @@ const db = require('../db/config');
 //set the object with a CAPITAL FUCKING LETTER!
 const Zen = {};
 
-//TODO: loop around and give these more complicated methods
-
 //logic for grabbing all zens
 Zen.findAll = function(){
 	return db.query(`
@@ -31,10 +29,10 @@ Zen.findById = function(id){
 Zen.create = function(zen){
 	return db.one(`
 		INSERT INTO zens 
-		(content, time_stamp, title)
-		VALUES($1, $2, $3)
+		(content, time_stamp, title, expiration_date)
+		VALUES($1, $2, $3, $4)
 		RETURNING *
-		`,[zen.content, zen.timeStamp, zen.title])
+		`,[zen.content, zen.timeStamp, zen.title, zen.expirationDate])
 }
 
 //export it

@@ -27,7 +27,7 @@ zenRouter.get('/new', authHelper.loginRequired, function(req, res){
 
 //zenRouter.get('/user', authHelper.loginRequired, zenController.indexUserValid)
 
-//Show valids
+//Show all
 zenRouter.get('/all', zenController.index);
 
 //Show one

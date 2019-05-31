@@ -19,12 +19,12 @@ zenController.index = function(req, res){
 };
 
 //logic for only bringing the non expired ones
-//TODO: Implement properly
 zenController.indexValid = function(req, res){
-	Zen.findAll().then(function(valids){
+	Zen.findAll().then(function(zens){
+		let valids = zens.filter(zen => zen.timestamp < zen.expirationDate);
 		res.json({
-				message: "Valid Zens retrieved successfully!",
-				zens: valids
+			message: "All valid Zens retrieved successfully!",
+			validZens: valids
 		})
 	}).catch(function(deezHands){
 		console.log(deezHands);
@@ -34,10 +34,12 @@ zenController.indexValid = function(req, res){
 
 //logic for creating a new zen
 zenController.create = function(req, res){
+	let currentTime = Date.now();
 	Zen.create({
 		title: req.body.title,
 		content: req.body.content,
-		timeStamp: Date.now(),
+		timeStamp: currentTime,
+		expirationDate: (req.body.content.split(" ").length * 5000) + currentTime, 
 	}).then(function(newZen){
 		res.json({
 			message: "Zen created successfully!",
