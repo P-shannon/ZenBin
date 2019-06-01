@@ -1,11 +1,6 @@
 ////Grab the model for information forwarding
 const Zen = require('../models/zen');
 
-////Grab the time module from node_modules
-const moment = require('moment');
-//And set the time format to a constant.
-const timeFormat = "MM/DD/YYYY, HH:mm:ss"
-
 ////Start making the controller for zens!
 //set the object with camel case singular context
 const zenController = {};
@@ -13,10 +8,9 @@ const zenController = {};
 //logic for rendering an index of all zens (temp)
 zenController.index = function(req, res){
 	Zen.findAll().then(function(zens){
-		res.render('app/index',{
-			header: "All Zens to date",
-			zens: zens,
-			user: req.user,
+		res.json({
+			message: "All Zens retrived successfully!",
+			zens
 		})
 	}).catch(function(deezHands){
 		console.log(deezHands);
@@ -26,16 +20,11 @@ zenController.index = function(req, res){
 
 //logic for only bringing the non expired ones
 zenController.indexValid = function(req, res){
-	Zen.findAll()
-	/*.then(function(zens){
-		return zens.filter(function(zen){
-			return moment().diff(moment(zen.time_stamp, timeFormat), 'seconds') < 300; 
-		})
-	})*/.then(function(valids){
-		res.render('app/index',{
-			header: "Active User Submited Zens",
-			zens: valids,
-			user: req.user,
+	Zen.findAll().then(function(zens){
+		let valids = zens.filter(zen => zen.timestamp < zen.expirationDate);
+		res.json({
+			message: "All valid Zens retrieved successfully!",
+			validZens: valids
 		})
 	}).catch(function(deezHands){
 		console.log(deezHands);
@@ -43,34 +32,19 @@ zenController.indexValid = function(req, res){
 	})
 };
 
-//Logic for showing a users valid zens
-zenController.indexUserValid = function(req, res){
-	Zen.findAllByUser(req.user.id)
-	/*.then(function(zens){
-		return zens.filter(function(zen){
-			return moment().diff(moment(zen.time_stamp, timeFormat), 'seconds') < 300; 
-		})
-	})*/.then(function(valids){
-		res.render('app/index',{
-			header: "These are your zens",
-			zens: valids,
-			user: req.user,
-		})
-	}).catch(function(deezHands){
-		console.log(deezHands);
-		res.status(500).send(deezHands);
-	})
-}
-
 //logic for creating a new zen
 zenController.create = function(req, res){
+	let currentTime = Date.now();
 	Zen.create({
 		title: req.body.title,
 		content: req.body.content,
-		timeStamp: Date.now(),
-		uid: req.user.id,
-	}).then(function(){
-		res.redirect('/zens');
+		timeStamp: currentTime,
+		expirationDate: (req.body.content.split(" ").length * 5000) + currentTime, 
+	}).then(function(newZen){
+		res.json({
+			message: "Zen created successfully!",
+			zen: newZen
+		});
 	}).catch(function(deezHands){
 		console.log(deezHands);
 		res.status(500).send(deezHands);
@@ -80,18 +54,10 @@ zenController.create = function(req, res){
 //logic for showing a single zen
 zenController.show = function(req, res){
 	Zen.findById(req.params.id)
-	/*.then(function(zen){
-		if(zen.user_id === req.user.id){
-			return zen;
-		}
-		else{
-			res.redirect('/zens/user')
-		}
-	})*/
 	.then(function(zen){
-		res.render('app/zen-single',{
-			zen: zen,
-			user: req.user
+		res.json({
+			message: "Zen retrieved successfully!",
+			zen: zen
 		})
 	}).catch(function(deezHands){
 		console.log(deezHands);
