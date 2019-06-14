@@ -21,7 +21,7 @@ zenController.index = function(req, res){
 //logic for only bringing the non expired ones
 zenController.indexValid = function(req, res){
 	Zen.findAll().then(function(zens){
-		let valids = zens.filter(zen => zen.timestamp < zen.expirationDate);
+		let valids = zens.filter(zen => Date.now() < Number(zen.expirationDate));
 		res.json({
 			message: "All valid Zens retrieved successfully!",
 			validZens: valids
